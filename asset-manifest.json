@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/GANTT_CHART_GENERATOR/static/css/main.7d2d87ef.css",
+    "main.js": "/GANTT_CHART_GENERATOR/static/js/main.36375a00.js",
+    "index.html": "/GANTT_CHART_GENERATOR/index.html",
+    "main.7d2d87ef.css.map": "/GANTT_CHART_GENERATOR/static/css/main.7d2d87ef.css.map",
+    "main.36375a00.js.map": "/GANTT_CHART_GENERATOR/static/js/main.36375a00.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7d2d87ef.css",
+    "static/js/main.36375a00.js"
+  ]
+}
