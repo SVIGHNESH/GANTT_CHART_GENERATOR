@@ -9,7 +9,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
-  
+
 // Import routes
 const projectRoutes = require('./routes/projectRoutes');
 const taskRoutes = require('./routes/taskRoutes');
@@ -58,21 +58,21 @@ app.use('*', (req, res) => {
 });
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => {
-  console.log('✅ Connected to MongoDB');
-  // Start server after successful DB connection
-  app.listen(PORT, () => {
-    console.log(`🚀 Server is running on port ${PORT}`);
-    console.log(`📊 Gantt Chart API available at http://localhost:${PORT}`);
-  });
-})
-.catch((error) => {
-  console.error('❌ MongoDB connection error:', error);
-  process.exit(1);
-});
+// mongoose.connect(process.env.MONGO_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// })
+// .then(() => {
+//   console.log('✅ Connected to MongoDB');
+//   // Start server after successful DB connection
+//   app.listen(PORT, () => {
+//     console.log(`🚀 Server is running on port ${PORT}`);
+//     console.log(`📊 Gantt Chart API available at http://localhost:${PORT}`);
+//   });
+// })
+// .catch((error) => {
+//   console.error('❌ MongoDB connection error:', error);
+//   process.exit(1);
+// });
 
 module.exports = app;
