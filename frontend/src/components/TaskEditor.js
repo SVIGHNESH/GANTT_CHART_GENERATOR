@@ -5,6 +5,7 @@ const TaskEditor = ({ project, onTasksUpdate }) => {
   const [tasks, setTasks] = useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
+  const [taskToEditId, setTaskToEditId] = useState(null); // Track the ID of the task being edited
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -36,6 +37,7 @@ const TaskEditor = ({ project, onTasksUpdate }) => {
       custom_class: ''
     });
     setEditingTask(null);
+    setTaskToEditId(null);
     setShowAddForm(false);
     setError('');
     setSuccess('');
@@ -133,6 +135,7 @@ const TaskEditor = ({ project, onTasksUpdate }) => {
       custom_class: task.custom_class || ''
     });
     setEditingTask(task);
+    setTaskToEditId(task.id); // Set the ID of the task being edited
     setShowAddForm(true);
   };
 

@@ -4,10 +4,10 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/your-db-name';
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+// const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/your-db-name';
+// mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+//   .then(() => console.log('MongoDB connected'))
+//   .catch((err) => console.error('MongoDB connection error:', err));
 
 
 // Import routes
@@ -57,25 +57,21 @@ app.use('*', (req, res) => {
   });
 });
 
-// Connect to MongoDB
-// mongoose.connect(process.env.MONGO_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// })
-// .then(() => {
-//   console.log('✅ Connected to MongoDB');
-//   // Start server after successful DB connection
-//   app.listen(PORT, () => {
-//     console.log(`🚀 Server is running on port ${PORT}`);
-//     console.log(`📊 Gantt Chart API available at http://localhost:${PORT}`);
-//   });
-// })
-// .catch((error) => {
-//   console.error('❌ MongoDB connection error:', error);
-//   process.exit(1);
-// });
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
+// Connect to MongoDB and start server only after successful connection
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('✅ Connected to MongoDB');
+  app.listen(PORT, () => {
+    console.log(`🚀 Server is running on port ${PORT}`);
+    console.log(`📊 Gantt Chart API available at http://localhost:${PORT}`);
+  });
+})
+.catch((error) => {
+  console.error('❌ MongoDB connection error:', error);
+  process.exit(1);
+});
 
 module.exports = app;
